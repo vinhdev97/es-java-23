@@ -1,8 +1,9 @@
-package vinhdev97.es_java.rest;
+package com.vinhdev97.es.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/** First Controller. */
 @RestController
 public class FirstController {
 

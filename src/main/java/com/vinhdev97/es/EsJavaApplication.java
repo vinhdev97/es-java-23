@@ -1,8 +1,9 @@
-package vinhdev97.es_java;
+package com.vinhdev97.es;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/** ES application. */
 @SpringBootApplication
 public class EsJavaApplication {
 
