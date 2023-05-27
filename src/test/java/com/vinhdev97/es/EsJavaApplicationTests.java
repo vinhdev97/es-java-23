@@ -1,4 +1,4 @@
-package vinhdev97.es_java;
+package com.vinhdev97.es;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
