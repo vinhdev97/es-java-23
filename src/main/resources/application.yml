@@ -4,3 +4,16 @@ spring:
     username: root
     password: vinhblue
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # Turn off spring Boot banner.
+  main:
+    banner-mode: off
+# Reduce log.
+logging:
+  level:
+    root: warn
+    com.vinhdev97.es.repository: DEBUG
+# Mybatis config.
+mybatis:
+  mapper-locations: "classpath:com.vinhdev97.es.repository/*.xml"
+  configuration:
+    map-underscore-to-camel-case: true

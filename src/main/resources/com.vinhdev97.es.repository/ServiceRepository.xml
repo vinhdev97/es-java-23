@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vinhdev97.es.repository.ServiceRepository">
+  <insert
+    flushCache="true"
+    id="create"
+    parameterType="com.vinhdev97.es.entity.Service"
+    timeout="20"
+    keyProperty="id"
+    useGeneratedKeys="true">
+    <![CDATA[
+    INSERT INTO service (
+      name,
+      created_by
+    ) VALUES (
+      #{name}
+      , #{createdBy}
+    )
+    ]]>
+  </insert>
+  <select id="findAll" resultType="com.vinhdev97.es.entity.Service">
+    <![CDATA[
+    SELECT * FROM service
+    ]]>
+  </select>
+</mapper>
