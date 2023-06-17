@@ -19,9 +19,59 @@
     )
     ]]>
   </insert>
-  <select id="findAll" resultType="com.vinhdev97.es.entity.Service">
+  <update
+    flushCache="true"
+    id="update"
+    parameterType="com.vinhdev97.es.entity.Service"
+    timeout="20"
+    keyProperty="id">
     <![CDATA[
+    UPDATE service SET
+    name = #{service.name},
+    updated_by = #{service.updatedBy}
+    where id = #{id}
+    ]]>
+  </update>
+  <update id="softDelete"
+    flushCache="true"
+    timeout="20">
+    UPDATE service SET
+    deleted_at = #{service.deletedAt},
+    deleted_by = #{service.deletedBy}
+    where id in
+    <foreach item="item" index="index" collection="serviceIds"
+      open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+  <update id="delete"
+    flushCache="true"
+    timeout="20">
+    UPDATE service SET
+    deleted_at = #{service.deletedAt},
+    deleted_by = #{service.deletedBy}
+    where id = ${id}
+  </update>
+  <select id="search" resultType="com.vinhdev97.es.entity.Service">
     SELECT * FROM service
+    where
+    id != 0
+    <if test="name != null">
+      AND name like CONCAT(#{name}, '%')
+    </if>
+    <if test="id != null">
+      AND id = #{id}
+    </if>
+    <if test="limit != null">
+      limit #{limit}
+      <if test="offset != null">
+       offset #{offset}
+      </if>
+    </if>
+  </select>
+  <select id="findById" resultType="com.vinhdev97.es.entity.Service">
+    <![CDATA[
+    SELECT * FROM service where id = #{id}
     ]]>
   </select>
 </mapper>
