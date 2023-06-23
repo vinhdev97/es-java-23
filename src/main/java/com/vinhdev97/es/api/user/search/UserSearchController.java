@@ -1,10 +1,9 @@
-package com.vinhdev97.es.api.service.search;
+package com.vinhdev97.es.api.user.search;
 
+import jakarta.annotation.Nullable;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,19 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/services")
-public class ServiceSearchController {
+@RequestMapping("/api/users")
+public class UserSearchController {
 
-  private final ServiceSearchService serviceSearchService;
+  private final UserSearchService userSearchService;
 
   @GetMapping
-  public ResponseEntity<List<ServiceSearchResponse>> search(
+  public ResponseEntity<UserPaginationSearchResponse> search(
       @RequestParam @Nullable Long id,
-      @RequestParam @Nullable String name,
-      @RequestParam @Nullable Long limit,
-      @RequestParam @Nullable Long offset) {
+      @RequestParam @Nullable String fullName,
+      @RequestParam @Nullable String phoneNumber,
+      @RequestParam @Nullable String email,
+      @RequestParam @Nullable String address,
+      @RequestParam(defaultValue = "3") @Nullable Long size,
+      @RequestParam(defaultValue = "1") @Nullable Long page) {
+
     return ResponseEntity.ok(
-        serviceSearchService.execute(id, name, limit, offset));
+        userSearchService.execute(
+            id, fullName, phoneNumber, email, address, size, (page < 1 ? 1 : page - 1)));
   }
 
   @ExceptionHandler({Exception.class})

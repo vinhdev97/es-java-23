@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/services/{serviceId}")
 public class ServiceSearchOneController {
 
+  String message = "message";
   private final ServiceSearchOneService serviceSearchOneService;
 
   @GetMapping
@@ -27,7 +28,7 @@ public class ServiceSearchOneController {
       return ResponseEntity.ok(serviceRes);
     } else {
       Map<String, String> errors = new HashMap<>();
-      errors.put("message", "Service not exist");
+      errors.put(message, "Service not exist");
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
     }
   }
@@ -35,11 +36,11 @@ public class ServiceSearchOneController {
   @ExceptionHandler({Exception.class})
   public ResponseEntity<Object> handleException(Exception ex) {
     Map<String, String> errors = new HashMap<>();
-    errors.put("message", ex.getMessage());
+    errors.put(message, ex.getMessage());
     if (ex.getCause() != null) {
-      errors.put("message", ex.getCause().getMessage());
+      errors.put(message, ex.getCause().getMessage());
       if (ex.getCause() instanceof SQLException) {
-        errors.put("message", "SQL Exception");
+        errors.put(message, "SQL Exception");
       }
     }
 

@@ -4,7 +4,6 @@ import com.vinhdev97.es.entity.Service;
 import com.vinhdev97.es.repository.ServiceRepository;
 import com.vinhdev97.es.api.service.SearchService;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -16,6 +15,6 @@ public class ServiceSearchService implements SearchService<ServiceSearchResponse
   @Override
   public List<ServiceSearchResponse> execute(Long id, String name, Long limit, Long offset) {
     List<Service> serviceList = serviceRepository.search(id, name, limit, offset);
-    return serviceList.stream().map(ServiceSearchResponse::of).collect(Collectors.toList());
+    return serviceList.stream().map(ServiceSearchResponse::of).toList();
   }
 }

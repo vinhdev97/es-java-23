@@ -2,7 +2,6 @@ package com.vinhdev97.es.repository;
 
 import com.vinhdev97.es.entity.Service;
 import java.util.List;
-import java.util.Optional;
 import org.apache.ibatis.annotations.Mapper;
 
 /** Service repository. */
@@ -16,7 +15,7 @@ public interface ServiceRepository {
 
   Long delete(Service service, Long id);
 
-  Service findById(Long Id);
+  Service findById(Long id);
 
   List<Service> search(Long id, String name, Long limit, Long offset);
 }
