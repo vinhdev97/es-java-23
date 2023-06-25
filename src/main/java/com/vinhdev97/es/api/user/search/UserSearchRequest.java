@@ -1,4 +1,4 @@
-package com.vinhdev97.es.api.service.search;
+package com.vinhdev97.es.api.user.search;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,9 +13,12 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServiceSearchRequest {
+public class UserSearchRequest {
   private Long id;
-  private String name;
+  private String fullName;
+  private String email;
+  private String phoneNumber;
+  private String address;
   private Long limit;
   private Long offset;
 }

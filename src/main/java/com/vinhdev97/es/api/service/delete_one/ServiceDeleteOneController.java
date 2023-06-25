@@ -27,11 +27,12 @@ public class ServiceDeleteOneController {
   @ExceptionHandler({Exception.class})
   public ResponseEntity<Object> handleException(Exception ex) {
     Map<String, String> errors = new HashMap<>();
-    errors.put("message", ex.getMessage());
+    String message = "message";
+    errors.put(message, ex.getMessage());
     if (ex.getCause() != null) {
-      errors.put("message", ex.getCause().getMessage());
+      errors.put(message, ex.getCause().getMessage());
       if (ex.getCause() instanceof SQLException) {
-        errors.put("message", "SQL Exception");
+        errors.put(message, "SQL Exception");
       }
     }
 

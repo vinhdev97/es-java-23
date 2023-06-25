@@ -1,5 +1,6 @@
-package com.vinhdev97.es.api.service.search;
+package com.vinhdev97.es.api.user.search_one;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,9 +14,8 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServiceSearchRequest {
+public class UserSearchOneRequest {
+
+  @NotNull(message = "Id là trường bắt buộc.")
   private Long id;
-  private String name;
-  private Long limit;
-  private Long offset;
 }

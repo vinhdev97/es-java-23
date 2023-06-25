@@ -1,6 +1,5 @@
 package com.vinhdev97.es.api.service.create;
 
-import com.vinhdev97.es.api.service.search.ServiceSearchRequest;
 import com.vinhdev97.es.entity.Service;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

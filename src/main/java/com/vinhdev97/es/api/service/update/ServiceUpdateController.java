@@ -4,14 +4,12 @@ import jakarta.validation.Valid;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +30,7 @@ public class ServiceUpdateController {
       bindingResult
           .getAllErrors()
           .forEach(
-              (error) -> {
+              error -> {
                 String fieldName = ((FieldError) error).getField();
                 String errorMessage = error.getDefaultMessage();
                 errors.put(fieldName, errorMessage);
@@ -47,11 +45,12 @@ public class ServiceUpdateController {
   @ExceptionHandler({Exception.class})
   public ResponseEntity<Object> handleException(Exception ex) {
     Map<String, String> errors = new HashMap<>();
-    errors.put("message", ex.getMessage());
+    String message = "message";
+    errors.put(message, ex.getMessage());
     if (ex.getCause() != null) {
-      errors.put("message", ex.getCause().getMessage());
+      errors.put(message, ex.getCause().getMessage());
       if (ex.getCause() instanceof SQLException) {
-        errors.put("message", "SQL Exception");
+        errors.put(message, "SQL Exception");
       }
     }
 
