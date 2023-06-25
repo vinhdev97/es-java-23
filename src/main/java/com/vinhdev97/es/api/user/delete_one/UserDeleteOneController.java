@@ -1,4 +1,4 @@
-package com.vinhdev97.es.api.service.delete_one;
+package com.vinhdev97.es.api.user.delete_one;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 /** Service create controller. */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/services/{id}")
-public class ServiceDeleteOneController {
-  private final ServiceDeleteOneService serviceDeleteService;
+@RequestMapping("/api/users/{id}")
+public class UserDeleteOneController {
+  private final UserDeleteOneService userDeleteService;
 
   @DeleteMapping
-  public ResponseEntity<ServiceDeleteOneResponse> delete(
+  public ResponseEntity<UserDeleteOneResponse> delete(
       @PathVariable Long id) {
-    return ResponseEntity.ok(serviceDeleteService.execute(id));
+    return ResponseEntity.ok(userDeleteService.execute(id));
   }
 }

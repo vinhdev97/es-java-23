@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.vinhdev97.es.repository.UserRepository">
-  <select id="search" resultType="com.vinhdev97.es.entity.User">
+  <select id="search" resultType="com.vinhdev97.es.entity.User"
+    parameterType="com.vinhdev97.es.api.user.search.UserSearchRequest">
     SELECT * FROM user
     where
     id != 0
@@ -21,19 +22,14 @@
     <if test="id != null">
       AND id = #{id}
     </if>
-    <if test="limit != null">
-      limit #{limit}
-      <if test="offset != null">
-       offset #{offset}
-      </if>
-    </if>
   </select>
   <select id="findById" resultType="com.vinhdev97.es.entity.User">
     <![CDATA[
     SELECT * FROM user where id = #{id}
     ]]>
   </select>
-  <select id="count" resultType="Long">
+  <select id="count" resultType="Long"
+    parameterType="com.vinhdev97.es.api.user.search.UserSearchRequest">
     SELECT count(*) FROM user
     where
     id != 0
@@ -53,4 +49,62 @@
       AND id = #{id}
     </if>
   </select>
+  <insert
+    flushCache="true"
+    id="create"
+    parameterType="com.vinhdev97.es.entity.User"
+    timeout="20"
+    keyProperty="id"
+    useGeneratedKeys="true">
+    <![CDATA[
+    INSERT INTO user (
+      full_name
+      , email
+      , phone_number
+      , address
+      , created_by
+    ) VALUES (
+      #{fullName}
+      , #{email}
+      , #{phoneNumber}
+      , #{address}
+      , #{createdBy}
+    )
+    ]]>
+  </insert>
+  <update
+    flushCache="true"
+    id="update"
+    parameterType="com.vinhdev97.es.entity.User"
+    timeout="20"
+    keyProperty="id">
+    <![CDATA[
+    UPDATE user SET
+    full_name = #{user.fullName}
+    , phone_number = #{user.phoneNumber}
+    , address = #{user.address}
+    , updated_by = #{user.updatedBy}
+    where id = #{id}
+    ]]>
+  </update>
+  <update id="softDelete"
+    flushCache="true"
+    timeout="20">
+    UPDATE user SET
+    deleted_at = #{user.deletedAt},
+    deleted_by = #{user.deletedBy}
+    where id in
+    <foreach item="item" index="index" collection="userIds"
+      open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+  <update id="delete"
+    flushCache="true"
+    timeout="20">
+    UPDATE user SET
+    deleted_at = #{user.deletedAt},
+    deleted_by = #{user.deletedBy}
+    where id = ${id}
+  </update>
 </mapper>

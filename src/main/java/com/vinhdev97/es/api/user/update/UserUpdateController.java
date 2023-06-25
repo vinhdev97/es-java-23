@@ -1,4 +1,4 @@
-package com.vinhdev97.es.api.service.update;
+package com.vinhdev97.es.api.user.update;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,17 +15,17 @@ import org.springframework.web.server.ResponseStatusException;
 /** Service create controller. */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/services/{serviceId}")
-public class ServiceUpdateController {
-  private final ServiceUpdateService serviceUpdateService;
+@RequestMapping("/api/users/{userId}")
+public class UserUpdateController {
+  private final UserUpdateService userUpdateService;
 
   @PutMapping
-  public ResponseEntity<ServiceUpdateResponse> update(
-      @RequestBody @Valid ServiceUpdateRequest request, @PathVariable Long serviceId, BindingResult bindingResult) {
+  public ResponseEntity<UserUpdateResponse> update(
+      @RequestBody @Valid UserUpdateRequest request, @PathVariable Long userId, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid input");
     }
 
-    return ResponseEntity.ok(serviceUpdateService.execute(request, serviceId));
+    return ResponseEntity.ok(userUpdateService.execute(request, userId));
   }
 }
