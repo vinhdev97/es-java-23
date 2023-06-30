@@ -17,3 +17,6 @@ mybatis:
   mapper-locations: "classpath:com.vinhdev97.es.repository/*.xml"
   configuration:
     map-underscore-to-camel-case: true
+server:
+  error:
+    include-message: always

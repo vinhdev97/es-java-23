@@ -52,7 +52,8 @@
     deleted_by = #{service.deletedBy}
     where id = ${id}
   </update>
-  <select id="search" resultType="com.vinhdev97.es.entity.Service">
+  <select id="search" resultType="com.vinhdev97.es.entity.Service"
+    parameterType="com.vinhdev97.es.api.service.search.ServiceSearchRequest">
     SELECT * FROM service
     where
     id != 0
@@ -61,12 +62,6 @@
     </if>
     <if test="id != null">
       AND id = #{id}
-    </if>
-    <if test="limit != null">
-      limit #{limit}
-      <if test="offset != null">
-       offset #{offset}
-      </if>
     </if>
   </select>
   <select id="findById" resultType="com.vinhdev97.es.entity.Service">

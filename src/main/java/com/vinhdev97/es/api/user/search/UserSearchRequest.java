@@ -19,6 +19,6 @@ public class UserSearchRequest {
   private String email;
   private String phoneNumber;
   private String address;
-  private Long limit;
-  private Long offset;
+  private int limit;
+  private int offset;
 }

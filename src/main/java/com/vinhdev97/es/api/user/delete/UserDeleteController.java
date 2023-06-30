@@ -1,4 +1,4 @@
-package com.vinhdev97.es.api.service.delete;
+package com.vinhdev97.es.api.user.delete;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 /** Service create controller. */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/services")
-public class ServiceDeleteController {
-  private final ServiceDeleteService serviceDeleteService;
+@RequestMapping("/api/users")
+public class UserDeleteController {
+  private final UserDeleteService userDeleteService;
 
   @DeleteMapping
-  public ResponseEntity<ServiceDeleteResponse> delete(
-      @RequestBody @Valid ServiceDeleteRequest request) {
-    return ResponseEntity.ok(serviceDeleteService.execute(request));
+  public ResponseEntity<UserDeleteResponse> delete(
+      @RequestBody @Valid UserDeleteRequest request) {
+    return ResponseEntity.ok(userDeleteService.execute(request));
   }
 }
