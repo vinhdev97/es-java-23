@@ -1,7 +1,6 @@
 package com.vinhdev97.es.repository;
 
 import com.vinhdev97.es.api.user.search.UserSearchRequest;
-import com.vinhdev97.es.entity.Service;
 import com.vinhdev97.es.entity.User;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;

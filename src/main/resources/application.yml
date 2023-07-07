@@ -4,6 +4,30 @@ spring:
     username: root
     password: vinhblue
     driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    oauth2:
+      client:
+        registration:
+          auth:
+            client-id: es-java-23
+            client-secret: E0SsItqUGoR5z8kBzWxKgmIT57uGWV8q
+            authorization-grant-type: authorization_code
+            scope: openid
+            issuer-uri: http://localhost:8180/realms/es-auth
+            user-name-attribute: preferred_username
+            redirect-uri: http://localhost:8080/login/oauth2/code/es-java-23
+        provider:
+          auth:
+            authorization-grant-type: authorization_code
+            authorization-uri: http://localhost:8180/realms/es-auth/protocol/openid-connect/auth
+            token-uri: http://localhost:8180/realms/es-auth/protocol/openid-connect/token
+            user-info-uri: http://localhost:8180/realms/es-auth/protocol/openid-connect/userinfo
+            user-name-attribute: sub
+            jwk-set-uri: http://localhost:8180/realms/es-auth/protocol/openid-connect/certs
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/es-auth
+          jwk-set-uri: http://localhost:8180/realms/es-auth/protocol/openid-connect/certs
   # Turn off spring Boot banner.
   main:
     banner-mode: off
@@ -20,3 +44,10 @@ mybatis:
 server:
   error:
     include-message: always
+keycloak:
+  auth-server-url: http://localhost:8180/auth
+  realm: es-auth
+  username: vinhdev97
+  password: vinhdev97
+  grant_type: password
+  client-secret: E0SsItqUGoR5z8kBzWxKgmIT57uGWV8q
