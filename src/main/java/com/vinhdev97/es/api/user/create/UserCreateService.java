@@ -1,9 +1,7 @@
 package com.vinhdev97.es.api.user.create;
 
 import com.vinhdev97.es.api.service.CreateService;
-import com.vinhdev97.es.entity.Service;
 import com.vinhdev97.es.entity.User;
-import com.vinhdev97.es.repository.ServiceRepository;
 import com.vinhdev97.es.repository.UserRepository;
 import java.time.OffsetDateTime;
 import lombok.RequiredArgsConstructor;

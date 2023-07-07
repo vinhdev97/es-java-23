@@ -1,7 +1,6 @@
 package com.vinhdev97.es.api.user.delete_one;
 
 import com.vinhdev97.es.api.service.DeleteOneService;
-import com.vinhdev97.es.entity.Service;
 import com.vinhdev97.es.entity.User;
 import com.vinhdev97.es.repository.UserRepository;
 import java.time.OffsetDateTime;

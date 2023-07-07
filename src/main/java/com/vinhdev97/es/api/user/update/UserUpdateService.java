@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @org.springframework.stereotype.Service
 public class UserUpdateService
     implements UpdateUser<UserUpdateRequest, UserUpdateResponse> {
-  private final UserRepository UserRepository;
+  private final UserRepository userRepository;
 
   public UserUpdateResponse execute(UserUpdateRequest request, Long serviceId) {
     User userUpdate =
@@ -21,7 +21,7 @@ public class UserUpdateService
             .build();
 
     userUpdate.setId(serviceId);
-    UserRepository.update(userUpdate, serviceId);
+    userRepository.update(userUpdate, serviceId);
 
     return UserUpdateResponse.of(userUpdate);
   }

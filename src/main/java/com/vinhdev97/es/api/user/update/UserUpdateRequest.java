@@ -1,6 +1,5 @@
 package com.vinhdev97.es.api.user.update;
 
-import com.vinhdev97.es.entity.Service;
 import com.vinhdev97.es.entity.User;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

@@ -1,7 +1,5 @@
 package com.vinhdev97.es.api.user.search;
 
-import com.vinhdev97.es.entity.User;
-import java.time.OffsetDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
